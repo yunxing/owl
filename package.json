@@ -1,0 +1,36 @@
+{
+  "name": "owl",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": {
+    "url": "https://github.com/yunxing/owl",
+    "type": "git"
+  },
+    "exportedEnvVars": {
+        "FINDLIB": {
+            "global": true,
+            "resolveAsRelativePath": true,
+            "globalCollisionBehavior": "joinPath",
+            "val": "./_build/ocamlfind/lib"
+        }
+    },
+  "dependencies": {
+      "@opam-alpha/oasis": "*",
+      "@opam-alpha/ocamlfind": "*",
+      "@opam-alpha/ctypes-foreign": "*",
+      "@opam-alpha/ctypes": "*",
+      "@opam-alpha/utop": "*",
+      "@opam-alpha/plplot": "*",
+      "@opam-alpha/dolog": "*",
+      "@opam-alpha/gsl": "*",
+      "@opam-alpha/ocaml": "= 4.02.3",
+      "dependency-env": "https://github.com/reasonml/dependency-env.git",
+      "substs": "https://github.com/yunxing/substs.git",
+      "opam-installer-bin": "https://github.com/yunxing/opam-installer-bin.git",
+      "nopam": "https://github.com/reasonml/nopam.git"
+  },
+  "scripts" : {
+    "postinstall": "eval $(dependencyEnv) && nopam && make oasis && make && make install"
+  },
+  "license": "MIT"
+}
